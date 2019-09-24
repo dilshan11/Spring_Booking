@@ -2,16 +2,20 @@ package com.second.dto;
 
 public class CustomerDto {
     int id;
-    String name;
-    int age;
+    String fname;
+    String lname;
+    String email;
+    String password;
 
     public CustomerDto() {
     }
 
-    public CustomerDto(int id, String name, int age) {
+    public CustomerDto(int id, String fname, String lname, String email, String password) {
         this.id = id;
-        this.name = name;
-        this.age = age;
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.password = password;
     }
 
     public int getId() {
@@ -22,28 +26,46 @@ public class CustomerDto {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFname() {
+        return fname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
-    public int getAge() {
-        return age;
+    public String getLname() {
+        return lname;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public String toString() {
         return "CustomerDto{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
+                ", fname='" + fname + '\'' +
+                ", lname='" + lname + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
