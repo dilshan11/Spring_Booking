@@ -1,38 +1,33 @@
-package com.second.dto;
+package com.second.entity;
 
-public class CustomerDto {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Owner")
+public class OwnerEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ownerId")
     int id;
+    @Column(name = "fname")
     String fname;
+    @Column(name = "lname")
     String lname;
+    @Column(name = "email")
     String email;
+    @Column(name = "password")
     String password;
-    String repassword;
+    @Column(name = "phnumber")
     int phnumber;
-    public CustomerDto() {
+
+    public OwnerEntity() {
     }
 
-    public CustomerDto(int id, String fname, String lname, String email, String password, int phnumber) {
-        this.id = id;
+    public OwnerEntity(String fname, String lname, String email, String password, int phnumber) {
         this.fname = fname;
         this.lname = lname;
         this.email = email;
         this.password = password;
-        this.phnumber = phnumber;
-    }
-
-    public String getRepassword() {
-        return repassword;
-    }
-
-    public void setRepassword(String repassword) {
-        this.repassword = repassword;
-    }
-
-    public int getPhnumber() {
-        return phnumber;
-    }
-
-    public void setPhnumber(int phnumber) {
         this.phnumber = phnumber;
     }
 
@@ -76,14 +71,23 @@ public class CustomerDto {
         this.password = password;
     }
 
+    public int getPhnumber() {
+        return phnumber;
+    }
+
+    public void setPhnumber(int phnumber) {
+        this.phnumber = phnumber;
+    }
+
     @Override
     public String toString() {
-        return "CustomerDto{" +
+        return "OwnerEntity{" +
                 "id=" + id +
                 ", fname='" + fname + '\'' +
                 ", lname='" + lname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", phnumber=" + phnumber +
                 '}';
     }
 }

@@ -1,7 +1,11 @@
 package com.second.service;
 
+import com.second.dto.CustomerDto;
+import com.second.dto.LoginDto;
 import com.second.entity.CustomerEntity;
 
 public interface CustomerService {
-    public void saveUsername(CustomerEntity customerEntity);
+   public String saveRegisterDetails(CustomerDto customerDto);
+
+   public CustomerEntity checklogin(LoginDto loginDto);
 }

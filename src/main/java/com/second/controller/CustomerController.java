@@ -4,35 +4,35 @@ import com.second.dto.CustomerDto;
 import com.second.dto.LoginDto;
 import com.second.entity.CustomerEntity;
 import com.second.repositery.CustomerRepositery;
+import com.second.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin
 @RestController
-@RequestMapping("api")
+@RequestMapping("customer")
 public class CustomerController {
 
     @Autowired
-    CustomerRepositery customerRepositery;
+    CustomerService customerService;
 
 //    @CrossOrigin
     @GetMapping("customer")
     public String saveCustomer(){
         System.out.println("get mapping wor");
-        CustomerEntity customerEntity=new CustomerEntity(1,"hashan",25);
-        customerRepositery.save(customerEntity);
+        CustomerDto customerDto=new CustomerDto(1,"hashan","dilshan","itisnesa","nana",1521);
+       // customerRepositery.save(c);
         return "customerEntity";
     }
-    @CrossOrigin
+
     @PostMapping("login")
-    public boolean checklogin(@RequestBody LoginDto loginDto){
-        System.out.println(loginDto);
-        return true;
+    public CustomerEntity checklogin(@RequestBody LoginDto loginDto){
+       return customerService.checklogin(loginDto);
     }
 
-//    @PostMapping("login")
-//    public boolean checklogin(){
-//        System.out.println("loginD");
-//        return true;
-//    }
+    @PostMapping("registerUser")
+    public String saveRegisterDetails(@RequestBody CustomerDto customerDto){
+        System.out.println(customerDto);
+        return this.customerService.saveRegisterDetails(customerDto);
+    }
 }

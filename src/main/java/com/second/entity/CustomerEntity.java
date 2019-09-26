@@ -1,26 +1,42 @@
 package com.second.entity;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-@EntityListeners(AuditingEntityListener.class)
+@Table(name = "Customer")
 public class CustomerEntity {
     @Id
+    @GeneratedValue(strategy =GenerationType.IDENTITY)
+    @Column(name = "customerId")
     int id;
-    String name;
-    int age;
+    @Column(name = "fname")
+    String fname;
+    @Column(name = "lname")
+    String lname;
+    @Column(name = "email")
+    String email;
+    @Column(name = "password")
+    String password;
+    @Column(name = "phnumber")
+    int phnumber;
 
     public CustomerEntity() {
     }
 
-    public CustomerEntity(int id, String name, int age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
+    public CustomerEntity(String fname, String lname, String email, String password, int phnumber) {
+        this.fname = fname;
+        this.lname = lname;
+        this.email = email;
+        this.password = password;
+        this.phnumber = phnumber;
+    }
+
+    public int getPhnumber() {
+        return phnumber;
+    }
+
+    public void setPhnumber(int phnumber) {
+        this.phnumber = phnumber;
     }
 
     public int getId() {
@@ -31,28 +47,46 @@ public class CustomerEntity {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFname() {
+        return fname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFname(String fname) {
+        this.fname = fname;
     }
 
-    public int getAge() {
-        return age;
+    public String getLname() {
+        return lname;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setLname(String lname) {
+        this.lname = lname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
     public String toString() {
-        return "CustomerDto{" +
+        return "CustomerEntity{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
+                ", fname='" + fname + '\'' +
+                ", lname='" + lname + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
                 '}';
     }
 }

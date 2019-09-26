@@ -1,38 +1,23 @@
 package com.second.dto;
 
-public class CustomerDto {
+public class OwnerDto {
     int id;
     String fname;
     String lname;
     String email;
     String password;
-    String repassword;
+   // String repassword;
     int phnumber;
-    public CustomerDto() {
+
+    public OwnerDto() {
     }
 
-    public CustomerDto(int id, String fname, String lname, String email, String password, int phnumber) {
+    public OwnerDto(int id, String fname, String lname, String email, String password, int phnumber) {
         this.id = id;
         this.fname = fname;
         this.lname = lname;
         this.email = email;
         this.password = password;
-        this.phnumber = phnumber;
-    }
-
-    public String getRepassword() {
-        return repassword;
-    }
-
-    public void setRepassword(String repassword) {
-        this.repassword = repassword;
-    }
-
-    public int getPhnumber() {
-        return phnumber;
-    }
-
-    public void setPhnumber(int phnumber) {
         this.phnumber = phnumber;
     }
 
@@ -76,14 +61,23 @@ public class CustomerDto {
         this.password = password;
     }
 
+    public int getPhnumber() {
+        return phnumber;
+    }
+
+    public void setPhnumber(int phnumber) {
+        this.phnumber = phnumber;
+    }
+
     @Override
     public String toString() {
-        return "CustomerDto{" +
+        return "OwnerDto{" +
                 "id=" + id +
                 ", fname='" + fname + '\'' +
                 ", lname='" + lname + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", phnumber=" + phnumber +
                 '}';
     }
 }
