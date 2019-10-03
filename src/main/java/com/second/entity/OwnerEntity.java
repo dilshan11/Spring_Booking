@@ -1,6 +1,8 @@
 package com.second.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "Owner")
@@ -19,6 +21,17 @@ public class OwnerEntity {
     String password;
     @Column(name = "phnumber")
     int phnumber;
+
+    @OneToMany(mappedBy = "ownerEntity",cascade = CascadeType.ALL)
+    List<HotelEntity> hotelEntities;
+
+    public List<HotelEntity> getHotelEntities() {
+        return hotelEntities;
+    }
+
+    public void setHotelEntities(List<HotelEntity> hotelEntities) {
+        this.hotelEntities = hotelEntities;
+    }
 
     public OwnerEntity() {
     }
@@ -89,5 +102,13 @@ public class OwnerEntity {
                 ", password='" + password + '\'' +
                 ", phnumber=" + phnumber +
                 '}';
+    }
+
+    public void add(HotelEntity temperentity){
+        if(hotelEntities==null){
+            hotelEntities=new ArrayList<>();
+        }
+        hotelEntities.add(temperentity);
+        temperentity.setOwnerEntity(this);
     }
 }

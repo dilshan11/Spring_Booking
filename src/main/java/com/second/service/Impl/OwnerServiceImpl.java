@@ -34,6 +34,7 @@ public class OwnerServiceImpl implements OwnerService {
     public OwnerEntity checklogin(LoginDto loginDto) {
         try {
             OwnerEntity ownerEntity= ownerRepositery.findByEmail(loginDto.getEmail()).get(0);
+            System.out.println(ownerEntity);
             if(ownerEntity.getPassword().equals(loginDto.getPassword())){
                 return ownerEntity;
             }
