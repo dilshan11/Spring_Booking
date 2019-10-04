@@ -1,5 +1,6 @@
 package com.second.controller;
 
+import com.second.dto.FacilityDto;
 import com.second.dto.HotelDto;
 import com.second.dto.LoginDto;
 import com.second.dto.OwnerDto;
@@ -34,5 +35,10 @@ public class OwnerController {
         System.out.println(hotelDto);
         return this.hotelService.saveHotelBasicForm(hotelDto);
 
+    }
+    @PostMapping("facilityform")
+    public boolean savefacilities(@RequestBody FacilityDto facilityDto, @RequestParam int hotelid){
+         hotelService.saveFacilityForm(facilityDto,hotelid);
+        return true;
     }
 }

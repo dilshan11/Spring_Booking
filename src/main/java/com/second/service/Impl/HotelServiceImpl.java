@@ -1,6 +1,8 @@
 package com.second.service.Impl;
 
+import com.second.dto.FacilityDto;
 import com.second.dto.HotelDto;
+import com.second.entity.FacilityEntity;
 import com.second.entity.HotelEntity;
 import com.second.entity.OwnerEntity;
 import com.second.repositery.HotelRepositery;
@@ -39,6 +41,21 @@ public class HotelServiceImpl implements HotelService {
             }
         }
             return 1;
+    }
+
+    @Override
+    public boolean saveFacilityForm(FacilityDto facilityDto, int hotelid) {
+        FacilityEntity facilityEntity1=new FacilityEntity(facilityDto.getOutdoor_pool(),facilityDto.getDryer(),facilityDto.getIndoor_pool(),facilityDto.getHot_tub(),facilityDto.getFree_parking(),facilityDto.getGym(),facilityDto.getHeating(),facilityDto.getCloset(),facilityDto.getFireplace(),facilityDto.getEntrance(),facilityDto.getElevator(),facilityDto.getWheelchair(),facilityDto.getDoorman(),facilityDto.getBreakfast(),facilityDto.getTea(),facilityDto.getCoffee(),facilityDto.getTeamaker(),facilityDto.getKitchen());
+        try {
+            HotelEntity hotelEntity = hotelRepositery.findById(hotelid).get();
+            hotelEntity.setFacilityEntity(facilityEntity1);
+            hotelRepositery.save(hotelEntity);
+            
+            return true;
+        }
+        catch (Exception e){
+            return false;
+        }
     }
 }
 

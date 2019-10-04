@@ -22,10 +22,22 @@ public class HotelEntity {
     @Column(name = "city")
     String city;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "facilityId")
+    FacilityEntity facilityEntity;
+
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ownerId")
     OwnerEntity ownerEntity;
+
+    public FacilityEntity getFacilityEntity() {
+        return facilityEntity;
+    }
+
+    public void setFacilityEntity(FacilityEntity facilityEntity) {
+        this.facilityEntity = facilityEntity;
+    }
 
     public OwnerEntity getOwnerEntity() {
         return ownerEntity;
