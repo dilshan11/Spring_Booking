@@ -50,7 +50,7 @@ public class HotelServiceImpl implements HotelService {
             HotelEntity hotelEntity = hotelRepositery.findById(hotelid).get();
             hotelEntity.setFacilityEntity(facilityEntity1);
             hotelRepositery.save(hotelEntity);
-            
+
             return true;
         }
         catch (Exception e){
