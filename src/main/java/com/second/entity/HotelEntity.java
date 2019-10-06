@@ -3,6 +3,8 @@ package com.second.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Table(name = "Hotel")
 @Entity
@@ -26,10 +28,21 @@ public class HotelEntity {
     @JoinColumn(name = "facilityId")
     FacilityEntity facilityEntity;
 
+     @OneToMany(mappedBy = "hotelEntity")
+    List<RoomEntity> roomEntities;
+
     @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "ownerId")
     OwnerEntity ownerEntity;
+
+    public List<RoomEntity> getRoomEntities() {
+        return roomEntities;
+    }
+
+    public void setRoomEntities(List<RoomEntity> roomEntities) {
+        this.roomEntities = roomEntities;
+    }
 
     public FacilityEntity getFacilityEntity() {
         return facilityEntity;
@@ -104,6 +117,14 @@ public class HotelEntity {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public void add(RoomEntity roomEntity){
+        if(roomEntities==null){
+            roomEntities=new ArrayList<>();
+        }
+        roomEntities.add(roomEntity);
+        roomEntity.setHotelEntity(this);
     }
 
     @Override
