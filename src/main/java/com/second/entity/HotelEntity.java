@@ -24,6 +24,9 @@ public class HotelEntity {
     @Column(name = "city")
     String city;
 
+    @Column(name = "image_url")
+    String imageinput;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "facilityId")
     FacilityEntity facilityEntity;
@@ -63,12 +66,21 @@ public class HotelEntity {
     public HotelEntity() {
     }
 
-    public HotelEntity(String ptype, String pname, String sadress, String village, String city) {
+    public HotelEntity(String ptype, String pname, String sadress, String village, String city, String imageinput) {
         this.ptype = ptype;
         this.pname = pname;
         this.sadress = sadress;
         this.village = village;
         this.city = city;
+        this.imageinput = imageinput;
+    }
+
+    public String getImageinput() {
+        return imageinput;
+    }
+
+    public void setImageinput(String imageinput) {
+        this.imageinput = imageinput;
     }
 
     public int getHotelid() {

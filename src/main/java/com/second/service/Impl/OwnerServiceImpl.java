@@ -1,5 +1,6 @@
 package com.second.service.Impl;
 
+import com.second.dto.HotelDto;
 import com.second.dto.LoginDto;
 import com.second.dto.OwnerDto;
 import com.second.entity.OwnerEntity;
@@ -43,4 +44,6 @@ public class OwnerServiceImpl implements OwnerService {
         }
         return null;
     }
+
+
 }

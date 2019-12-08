@@ -4,11 +4,14 @@ import com.second.dto.FacilityDto;
 import com.second.dto.HotelDto;
 import com.second.dto.LoginDto;
 import com.second.dto.OwnerDto;
+import com.second.entity.HotelEntity;
 import com.second.entity.OwnerEntity;
 import com.second.service.Impl.HotelServiceImpl;
 import com.second.service.OwnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin
 @RestController
@@ -40,5 +43,11 @@ public class OwnerController {
     public boolean savefacilities(@RequestBody FacilityDto facilityDto, @RequestParam int hotelid){
          hotelService.saveFacilityForm(facilityDto,hotelid);
         return true;
+    }
+    @GetMapping("owner_hotel/{owner_id}")
+    public List<HotelDto> getallhotels_owner(@PathVariable("owner_id") String id){
+        System.out.println(id);
+     return this.hotelService.getallhotel_owner(id);
+
     }
 }

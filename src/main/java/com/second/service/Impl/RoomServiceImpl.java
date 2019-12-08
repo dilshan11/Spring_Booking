@@ -12,6 +12,7 @@ import com.second.service.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -60,5 +61,12 @@ public class RoomServiceImpl implements RoomService {
             return false;
         }
         return false;
+    }
+
+    @Override
+    public List<RoomDto> getrooms_relatedtohotel(int hotelid) {
+        List<RoomEntity> roomEntities=this.roomRepositery.getroomsrelated_hotel(hotelid);
+        System.out.println(roomEntities);
+        return null;
     }
 }

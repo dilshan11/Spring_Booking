@@ -8,10 +8,12 @@ public class HotelDto {
     String village;
     String city;
     int ownerId;
+    String imageinput;
+
     public HotelDto() {
     }
 
-    public HotelDto(int hotelid, String ptype, String pname, String sadress, String village, String city, int ownerId) {
+    public HotelDto(int hotelid, String ptype, String pname, String sadress, String village, String city, int ownerId, String imageinput) {
         this.hotelid = hotelid;
         this.ptype = ptype;
         this.pname = pname;
@@ -19,14 +21,25 @@ public class HotelDto {
         this.village = village;
         this.city = city;
         this.ownerId = ownerId;
+        this.imageinput = imageinput;
     }
 
-    public HotelDto(String ptype, String pname, String sadress, String village, String city) {
+    public HotelDto(String ptype, String pname, String sadress, String village, String city, int ownerId, String imageinput) {
         this.ptype = ptype;
         this.pname = pname;
         this.sadress = sadress;
         this.village = village;
         this.city = city;
+        this.ownerId = ownerId;
+        this.imageinput = imageinput;
+    }
+
+    public String getImageinput() {
+        return imageinput;
+    }
+
+    public void setImageinput(String imageinput) {
+        this.imageinput = imageinput;
     }
 
     public int getHotelid() {
@@ -95,6 +108,7 @@ public class HotelDto {
                 ", village='" + village + '\'' +
                 ", city='" + city + '\'' +
                 ", ownerId=" + ownerId +
+                ", imageinput='" + imageinput + '\'' +
                 '}';
     }
 }

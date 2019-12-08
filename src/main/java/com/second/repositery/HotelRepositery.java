@@ -15,4 +15,6 @@ public interface HotelRepositery extends JpaRepository<HotelEntity,Integer> {
             value = "select * from hotel where owner_id=?1",
             nativeQuery = true)
      public List<HotelEntity> findByownerId(Integer ownerid);
+
+
 }

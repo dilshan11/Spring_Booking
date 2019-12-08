@@ -27,7 +27,7 @@ public class HotelServiceImpl implements HotelService {
 
     @Override
     public int saveHotelBasicForm(HotelDto hotelDto) {
-        HotelEntity hotelEntity = new HotelEntity(hotelDto.getPtype(), hotelDto.getPname(), hotelDto.getSadress(), hotelDto.getVillage(), hotelDto.getCity());
+        HotelEntity hotelEntity = new HotelEntity(hotelDto.getPtype(), hotelDto.getPname(), hotelDto.getSadress(), hotelDto.getVillage(), hotelDto.getCity(),hotelDto.getImageinput());
         int ownerid = hotelDto.getOwnerId();
         OwnerEntity ownerEntity = ownerRepositery.findById(ownerid).get();
         ownerEntity.add(hotelEntity);
@@ -56,6 +56,26 @@ public class HotelServiceImpl implements HotelService {
         catch (Exception e){
             return false;
         }
+    }
+
+    @Override
+    public List<HotelDto> getallhotel_owner(String id) {
+        try {
+            List<HotelEntity> hotelEntityList = this.hotelRepositery.findByownerId(Integer.parseInt((id)));
+            if (hotelEntityList == null) {
+                return null;
+            }
+            List<HotelDto> hotelDtos = new ArrayList<>();
+            for (HotelEntity hotelEntity : hotelEntityList) {
+                HotelDto hotelDto = new HotelDto(hotelEntity.getHotelid(), hotelEntity.getPtype(), hotelEntity.getPname(), hotelEntity.getSadress(), hotelEntity.getVillage(), hotelEntity.getCity(), hotelEntity.getHotelid(), hotelEntity.getImageinput());
+                hotelDtos.add(hotelDto);
+            }
+            return hotelDtos;
+        }catch (Exception e){
+            System.out.println(e);
+            return null;
+        }
+
     }
 }
 
